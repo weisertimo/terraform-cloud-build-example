@@ -1,0 +1,8 @@
+steps:
+- name: 'gcr.io/<PROJECT_NAME>terraform:1.0.9'
+  args: ['init', '-backend-config=./env/backend.${_ENV}.conf']
+- name: 'gcr.io/<PROJECT_NAME>terraform:1.0.9'
+  args: ['apply', '-auto-approve', '-var-file=./env/${_ENV}.tfvars']
+tags: ['cloud-builders-community']
+options:
+  logging: CLOUD_LOGGING_ONLY
